@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Image Source="Images/Сертификат_на_модули_УГП.jpg" x:Key="SertImg1"/>
+    <Image Source="Images/Сертификат_ПБ_Модули.jpg" x:Key="SertImg2"/>
+    <Image Source="Images/Сертификат_ПБ_МУПТВ.jpg" x:Key="SertImg3"/>
+    <Image Source="Images/Сертификат_ТР_ТС_л.1.jpg" x:Key="SertImg4"/>
+    <Image Source="Images/Сертификат_ТР_ТС_л.2.jpg" x:Key="SertImg5"/>
+    <Image Source="Images/Сертификат_ТР_ТС_л.3.jpg" x:Key="SertImg6"/>
+    <Image Source="Images/ФБУ_Лицензия_МЧС-1-min1-min.jpg" x:Key="SertImgMchs1"/>
+    <Image Source="Images/ФБУ_Лицензия_МЧС-1-min2-min.jpg" x:Key="SertImgMchs2"/>
+    <Image Source="Images/Примеры_работ_АФЕСПРО_-_01.jpg" x:Key="SertImgMchs4"/>
+ 
+    <BitmapImage x:Key="ImgEx1" UriSource="Images/Примеры_работ_АФЕСПРО_-_01.jpg"/>
+    <BitmapImage x:Key="ImgEx2" UriSource="Images/Примеры_работ_АФЕСПРО_-_02.jpg"/>
+    <BitmapImage x:Key="ImgEx3" UriSource="Images/Примеры_работ_АФЕСПРО_-_03.jpg"/>
+
+</ResourceDictionary>
