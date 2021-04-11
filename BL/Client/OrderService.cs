@@ -122,6 +122,12 @@ namespace BL
             });
         }
 
+        public async Task<ServiceDto> GetService(int serviceId)
+        {
+            await dbContext.Services.LoadAsync();
+            var service = await dbContext.Services.FindAsync(serviceId);
+            return mapper.MapTo<Service, ServiceDto>(service);
+        }
 
         public async Task<OrderDto> CancelOrder(int orderId)
         {

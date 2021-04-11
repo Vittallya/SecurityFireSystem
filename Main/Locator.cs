@@ -26,6 +26,7 @@ namespace Main
         public  ViewModels.OrderDataViewModel OrderDataViewModel => Services.GetRequiredService<OrderDataViewModel>();
         public  ViewModels.SertsViewModel SertsViewModel => Services.GetRequiredService<SertsViewModel>();
         public  ViewModels.WorkersViewModel WorkersViewModel => Services.GetRequiredService<WorkersViewModel>();
+        public  ViewModels.ProfileRegisterViewModel ProfileRegisterViewModel => Services.GetRequiredService<ProfileRegisterViewModel>();
     }
 }
 

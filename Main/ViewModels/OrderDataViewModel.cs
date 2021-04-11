@@ -11,6 +11,7 @@ namespace Main.ViewModels
         private readonly OrderService orderService;
         private readonly UserService userService;
         private readonly RegisterService registerService;
+        private readonly EventBus eventBus;
 
         public bool IsAutorized { get; set; }
 
@@ -21,11 +22,13 @@ namespace Main.ViewModels
         public DateTime StartDate { get; set; }
 
         public OrderDataViewModel(PageService pageservice, 
-            OrderService orderService, UserService userService, RegisterService registerService) : base(pageservice)
+            OrderService orderService, UserService userService, 
+            RegisterService registerService, EventBus eventBus) : base(pageservice)
         {
             this.orderService = orderService;
             this.userService = userService;
             this.registerService = registerService;
+            this.eventBus = eventBus;
             Init();
         }
 
@@ -80,21 +83,18 @@ namespace Main.ViewModels
             OrderDto.OrderDate = new DateTimeOffset(OrderDate);
             orderService.SetupFilledOrder(OrderDto);
 
-            int userId;
-
-            if (IsAutorized)
+            if (!IsAutorized)
             {
-                userId = userService.CurrentUser.Id;
+                registerService.SetupClient(ClientDto);
+                pageservice.ChangePage<Pages.ProfileRegisterPage>(PoolIndex, DisappearAnimation.Default);
             }
             else
             {
-                registerService.SetupClient(ClientDto);
-                var res = await registerService.RegisterAsync();
-                userId = res.Item2;
+                pageservice.ChangePage<Pages.OrderResultPage>(DisappearAnimation.Default);
             }
-            orderService.SetupClient(userId);
-            pageservice.ChangePage<Pages.OrderResultPage>(DisappearAnimation.Default);
         }
+
+
 
         public override int PoolIndex => Rules.Pages.MainPool;
     }

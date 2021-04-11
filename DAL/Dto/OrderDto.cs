@@ -26,5 +26,6 @@ namespace DAL.Dto
 
         public bool IsCanceled => OrderStatus == OrderStatus.Canceled;
         public double PersonalSale { get; set; }
+        public int ServiceId { get; set; }
     }
 }

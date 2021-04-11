@@ -54,11 +54,17 @@ namespace Main.ViewModels
         public ICommand ToAutorize => new Command(x =>
         {
             pageservice.ChangePage<Pages.LoginPage>(PoolIndex, DisappearAnimation.Default);
+            eventBus.Subscribe<Events.AccountEntered, HomeViewModel>(OnEntered);
         });
+
+        private async Task OnEntered(AccountEntered arg)
+        {
+            pageservice.ChangePage<Pages.HomePage>(DisappearAnimation.Default);
+        }
 
         public ICommand ToServices => new Command(x =>
         {
-            pageservice.ChangePage<Pages.ServicesPage>(PoolIndex, DisappearAnimation.Default);
+            pageservice.ChangePage<Pages.ServicesPage>(DisappearAnimation.Default);
         });
 
         public ICommand ToSerts => new Command(x =>
@@ -70,6 +76,7 @@ namespace Main.ViewModels
 
         public ICommand ToWorkers => new Command(x =>
         {
+            pageservice.ChangePage<Pages.WorkersPage>(PoolIndex, DisappearAnimation.Default);
         });
 
         public ICommand ToWorks => new Command(x =>
@@ -79,6 +86,17 @@ namespace Main.ViewModels
             pageservice.ChangePage<Pages.SertsPage>(PoolIndex, DisappearAnimation.Default);
 
         });
+
+        public ICommand LogoutCommand => new Command(x =>
+        {
+            userService.Logout();
+        });
+
+        public ICommand ToProfileView => new Command(x =>
+        {
+            pageservice.ChangePage<Pages.ClientPage>(DisappearAnimation.Default);
+        });
+       
 
         public override int PoolIndex => Rules.Pages.MainPool;
     }

@@ -91,6 +91,7 @@ namespace BL
             return true;
         }
 
+
         public async Task<(bool, int)> RegisterAsync()
         {
             if (_profile != null)

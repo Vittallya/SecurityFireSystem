@@ -11,12 +11,34 @@ namespace Main.ViewModels
     {
         private readonly UserService userService;
         private readonly OrderService orderService;
+        private OrderDto selectedOrder;
 
-        public ClientDto ClientDto { get; set; }
+        public bool DetailsVis { get; set; }
 
-        public OrderDto SelectedOrder { get; set; }
+        public OrderDto SelectedOrder 
+        { 
+            get => selectedOrder; 
+            set 
+            {
+                DetailsVis = value != null;
 
-        public ObservableCollection<ServiceDto> OrderedServices { get; set; }
+                if (DetailsVis)
+                {
+                    selectedOrder = value;                  
+                    OnPropertyChanged();
+                    SetupService(value.ServiceId);
+                }
+            }
+        }
+
+        async void SetupService(int serviceId)
+        {
+            Service = await orderService.GetService(serviceId);
+        }
+
+        public ServiceDto Service { get; set; }
+
+
 
         public ProfileViewModel(PageService pageservice, UserService userService, OrderService orderService) : base(pageservice)
         {
@@ -28,39 +50,23 @@ namespace Main.ViewModels
         async void Init()
         {
             Orders = new ObservableCollection<OrderDto>(await orderService.GetAllOrders(userService.CurrentUser.Id));
-            ClientDto = userService.CurrentUser;
         }
 
         public ICommand CancelOrder => new CommandAsync(async x =>
         {
-            if(x is OrderDto dto && 
-            MessageBox.Show("Отменить заказ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Удалить заказ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                int index = Orders.IndexOf(dto);
-                Orders[index] = await orderService.CancelOrder(dto.Id);
+                await orderService.CancelOrder(SelectedOrder.Id);
+                Orders.Remove(SelectedOrder);
             }
         });
 
         public bool IsLoadingVisible { get; set; }
 
-        public bool IsServicesExist { get; set; }
-
-        public ICommand SelectOrder => new CommandAsync(async x =>
-        {
-            if (x is OrderDto dto)
-            {
-                IsLoadingVisible = true;
-                SelectedOrder = dto;
-
-                IsServicesExist = OrderedServices.Count > 0;
-
-                IsLoadingVisible = false;
-
-            }
-        });
 
         protected override void Back()
         {
+            pageservice.ChangePage<Pages.HomePage>(DisappearAnimation.Default);
         }
 
         public ObservableCollection<OrderDto> Orders { get; set; }

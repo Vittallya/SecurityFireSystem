@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,6 +10,10 @@ namespace BL
 {
     public class SourceService
     {
+        public SourceService(MapperService mapper)
+        {
+            this.mapper = mapper;
+        }
         public IEnumerable<dynamic> Resources { get; private set; }
 
         public bool IsSetted => Resources != null;
@@ -86,22 +91,23 @@ namespace BL
         }
 
         IEnumerable<Worker> workers;
+        private readonly MapperService mapper;
 
-        public IEnumerable<Worker> GetWorkers()
+        public void Reload(Func<string, string> pathGetter)
         {
-            return workers ?? (workers = new List<Worker>
+            workers = new List<Worker>
             {
                 new Worker
                 {
                     Gender = true,
                     Name = "Иван",
-                    
+
                     Special = "Монатжник",
-                    StartWorkingDate = new System.DateTimeOffset(new DateTime(2011, 2, 2)),
+                    StartWorkingDate = new System.DateTimeOffset(new DateTime(2011, 2, 3)),
                     WorkerAnket = new WorkerAnket
                     {
                         Quotation = "Работал уже более чем на 100 объектах, мне нравится тут",
-                        Image = "male4"
+                        Image = "male4",
                     }
                 },
                 new Worker
@@ -121,7 +127,7 @@ namespace BL
                     Gender = true,
                     Name = "Сергей",
                     Special = "Управляющий",
-                    StartWorkingDate = new System.DateTimeOffset(new DateTime(2010, 22, 2)),
+                    StartWorkingDate = new System.DateTimeOffset(new DateTime(2010, 9, 12)),
                     WorkerAnket = new WorkerAnket
                     {
                         Quotation = "Помню с чего мы начинали, и, смотря теперь на наши результаты, я горжусь нашим коллективом!",
@@ -133,7 +139,7 @@ namespace BL
                     Gender = false,
                     Name = "Алена",
                     Special = "Оператор кол-центра",
-                    StartWorkingDate = new System.DateTimeOffset(new DateTime(2017, 12, 1)),
+                    StartWorkingDate = new System.DateTimeOffset(new DateTime(2017, 11, 5)),
                     WorkerAnket = new WorkerAnket
                     {
                         Quotation = "Не знаю кому как, мне нормас",
@@ -145,7 +151,7 @@ namespace BL
                     Gender = true,
                     Name = "Петр",
                     Special = "Старший инженер",
-                    StartWorkingDate = new System.DateTimeOffset(new DateTime(2013, 11, 25)),
+                    StartWorkingDate = new System.DateTimeOffset(new DateTime(2013, 4, 21)),
                     WorkerAnket = new WorkerAnket
                     {
                         Quotation = "Нигде еще не видел такого уровня ответсвтенности за работу",
@@ -165,7 +171,18 @@ namespace BL
                     }
                 },
 
-            });
+            };
+
+            foreach (var w in workers)
+            {
+                w.WorkerAnket.ImagePath = pathGetter?.Invoke(w.WorkerAnket.Image);
+            }
+        }
+
+
+        public IEnumerable<Worker> GetWorkers()
+        {            
+            return workers;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace DAL.Models
         public string Quotation { get; set; }
 
         public string Image { get; set; }
-
+        public string ImagePath { get; set; }
         public Worker Worker { get; set; }
     }
 }

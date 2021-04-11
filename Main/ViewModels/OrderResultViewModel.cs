@@ -5,15 +5,16 @@ namespace Main.ViewModels
 {
     public class OrderResultViewModel : BasePageViewModel
     {
+        private readonly RegisterService registerService;
         private readonly OrderService orderService;
-        private readonly ServicesService servicesService;
         private readonly UserService userService;
 
-        public OrderResultViewModel(PageService pageservice, 
-            OrderService orderService, ServicesService servicesService) : base(pageservice)
+        public OrderResultViewModel(PageService pageservice, RegisterService registerService, 
+            OrderService orderService, UserService userService) : base(pageservice)
         {
+            this.registerService = registerService;
             this.orderService = orderService;
-            this.servicesService = servicesService;
+            this.userService = userService;
             Init();
         }
 
@@ -24,6 +25,20 @@ namespace Main.ViewModels
         async void Init()
         {
             IsAnimVisible = true;
+
+            int userId;
+
+            if (!userService.IsAutorized)
+            {
+                userId = (await registerService.RegisterAsync()).Item2;
+            }
+            else
+            {
+                userId = userService.CurrentUser.Id;
+            }
+
+            orderService.SetupClient(userId);
+
             bool res = await orderService.ApplyOrder();
             Message = res ? "Оформлено!" : orderService.ErrorMessage;
             orderService.Clear();

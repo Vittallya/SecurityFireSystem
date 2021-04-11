@@ -1,4 +1,4 @@
-﻿<Page x:Class="Main.Pages.ClientRegisterPage"
+﻿<Page x:Class="Main.Pages.OrderDataPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:Main.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      DataContext="{Binding Source={StaticResource Locator}, Path=ClientRegisterViewModel}"
-      Title="ClientRegisterPage">
+      DataContext="{Binding Source={StaticResource Locator}, Path=OrderDataViewModel}"
+      Title="OrderDataPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -42,8 +42,12 @@
             </Grid.RowDefinitions>
 
             <StackPanel HorizontalAlignment="Left" Width="250">
-                <TextBlock Margin="0 15" Style="{DynamicResource TextBlock_H3}" Text="Ваше имя:"/>
-                <TextBlock Style="{DynamicResource TextBlock_H3}" Text="Номер телефона:"/>
+                <TextBlock 
+                    Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
+                    Margin="0 15" Style="{DynamicResource TextBlock_H3}" Text="Ваше имя:"/>
+                <TextBlock
+                    Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
+                    Style="{DynamicResource TextBlock_H3}" Text="Номер телефона:"/>
                 <TextBlock 
                     Style="{DynamicResource TextBlock_H3}" Text="Введите адрес:" 
                      Margin="0 15"/>
@@ -51,11 +55,15 @@
                     Style="{DynamicResource TextBlock_H3}" Text="Дата начала установки:"/>
             </StackPanel>
 
-            
-            
+
+
             <StackPanel Width="210" Grid.Column="1">
-                <TextBox Text="{Binding ClientDto.Name}" Margin="0 15" FontSize="15" />
-                <TextBox Text="{Binding ClientDto.Phone}" FontSize="15" />
+                <TextBox 
+                    Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
+                    Text="{Binding ClientDto.Name}" Margin="0 15" FontSize="15" />
+                <TextBox 
+                    Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
+                    Text="{Binding ClientDto.Phone}" FontSize="15" />
                 <TextBox Text="{Binding OrderDto.Address}" 
                          FontSize="15" 
                     Margin="0 15"/>
@@ -74,7 +82,7 @@
                 FontSize="16"
                 Visibility="{Binding IsErrorVisible, Converter={StaticResource BoolToVis}}"
                 Text="{Binding Message}"/>
-            
+
         </Grid>
 
         <Button Content="Назад"                 
@@ -92,10 +100,15 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Padding="45 7"
-                Content="Регистрация"
+                
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Command="{Binding NextCommand}"/>
+                Command="{Binding NextCommand}">
+            <StackPanel>
+                <TextBlock Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVis}}" Text="Оформить заказ"/>
+                <TextBlock Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}" Text="Продолжить"/>
+            </StackPanel>
+        </Button>
 
     </Grid>
 </Page>

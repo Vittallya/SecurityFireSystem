@@ -13,5 +13,7 @@
     <BitmapImage x:Key="ImgEx1" UriSource="Images/Примеры_работ_АФЕСПРО_-_01.jpg"/>
     <BitmapImage x:Key="ImgEx2" UriSource="Images/Примеры_работ_АФЕСПРО_-_02.jpg"/>
     <BitmapImage x:Key="ImgEx3" UriSource="Images/Примеры_работ_АФЕСПРО_-_03.jpg"/>
+    <BitmapImage x:Key="LeftArrow" UriSource="Images/leftArrow.png"/>
+    <BitmapImage x:Key="Quotation" UriSource="Images/quotation.png"/>
 
 </ResourceDictionary>

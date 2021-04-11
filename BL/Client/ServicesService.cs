@@ -34,8 +34,11 @@ namespace BL
             allServicesDto = allServices.Select(x => mapper.MapTo<Service, ServiceDto>(x));
         }
 
-        public IEnumerable<ServiceDto> GetAllServices(string name = null)
+        public async Task<IEnumerable<ServiceDto>> GetAllServices(string name = null)
         {
+            if (allServicesDto == null)
+                await ReloadAsync();
+
             if(name != null)
             {
                 return allServicesDto.Where(x => x.Name.Contains(name));

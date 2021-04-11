@@ -52,6 +52,24 @@
                         FontSize="18"
                         Command="{Binding ToWorks}"
                         Padding="35 8" Content="Примеры работ"/>
+                <Button Margin="0 9" 
+                        FontSize="18"
+                        Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVis}}"
+                        Command="{Binding ToProfileView}"
+                        Padding="35 8" Content="Мои заказы"/>
+                
+                <Button Margin="0 9" 
+                        FontSize="18"
+                        Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVis}}"
+                        Command="{Binding LogoutCommand}"
+                        Padding="35 8" Content="Выйти"/>
+                
+                <Button Margin="0 9" 
+                        FontSize="18"
+                        Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
+                        Command="{Binding ToAutorize}"
+                        Padding="35 8" Content="Авторизация"/>
+                
             </StackPanel>
             
         </Border>

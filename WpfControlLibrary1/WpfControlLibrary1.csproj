@@ -112,5 +112,11 @@
     <Resource Include="Images\Примеры_работ_АФЕСПРО_-_02.jpg" />
     <Resource Include="Images\Примеры_работ_АФЕСПРО_-_03.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\leftArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\quotation.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

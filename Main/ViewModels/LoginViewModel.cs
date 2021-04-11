@@ -3,6 +3,7 @@ using BL;
 using System.Windows.Input;
 using MVVM_Core;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace Main.ViewModels
 {
@@ -41,12 +42,16 @@ namespace Main.ViewModels
             }
             else
             {
-                IsErrorVisible = true;
-                ErrorMessage = loginService.ErrorMessage;
+                MessageBox.Show(loginService.ErrorMessage, "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
         }, y => Login != null && Login.Length > 1 && PasswordBox.Password != null && PasswordBox.Password.Length > 1);
+
+        protected override void Back()
+        {
+            pageService.ChangePage<Pages.HomePage>(DisappearAnimation.Default);
+        }
 
         public override int PoolIndex => Rules.Pages.MainPool;
     }
