@@ -62,7 +62,7 @@ namespace BL
         public OrderDto GetOrder()
         {
             return _currentOrder != null ? mapper.MapTo<Order, OrderDto>(_currentOrder) : 
-                new OrderDto() { OrderDate = DateTime.Now, OrderStatus = OrderStatus.Active, Address="/адрес/"};
+                new OrderDto() { OrderDate = DateTime.Now.AddDays(1), OrderStatus = OrderStatus.Active, Address="/адрес/"};
         }
 
         public void SetupFilledOrder(OrderDto order)

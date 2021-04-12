@@ -17,7 +17,6 @@
         </Grid.RowDefinitions>
 
 
-
         
 
         <StackPanel  Grid.Row="1" Width="260" HorizontalAlignment="Center">
@@ -61,23 +60,21 @@
         <Button 
                     Grid.Row="1"
                     Margin="25"
-                    FontSize="16"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Center"
                     Content="Войти" 
-                    Padding="55 10" 
+                    Padding="45 6" 
+            Style="{DynamicResource MenuButton}"
                     Command="{Binding LoginCommand}"/>
 
         <Button 
-                    Margin="25"  
+                    Margin="85 25"  
                     Content="Назад"
-                    FontSize="14"
-                    FontFamily="Trebuchet MS"
-                    Style="{StaticResource ButtonSkip}"
+                    Style="{StaticResource BackButton}"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
             Grid.Row="1"
-                    Padding="45 8   " 
+                    Padding="25 5   " 
                     Command="{Binding BackCommand}"/>
 
     </Grid>

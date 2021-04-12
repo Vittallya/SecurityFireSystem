@@ -49,7 +49,7 @@ namespace Main.ViewModels
             {
                 if (string.IsNullOrEmpty(ClientDto.Name))
                 {
-                    MessageBox.Show("Поле 'Имя' должно быть заполнено", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Поле 'ФИО' должно быть заполнено", "", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
 
@@ -66,11 +66,6 @@ namespace Main.ViewModels
                 return false;
             }
 
-            if (OrderDate < DateTime.Now)
-            {
-                MessageBox.Show("Занчение поля 'Дата' не должно быть раньше, чем сегодня", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
             return true;
         }
 

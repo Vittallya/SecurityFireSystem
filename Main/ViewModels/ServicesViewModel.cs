@@ -22,6 +22,8 @@ namespace Main.ViewModels
             Init();
         }
 
+        public ServiceDto Selected { get; set; }
+
         async void Init()
         {
             Services = new ObservableCollection<ServiceDto>(await servicesService.GetAllServices());
@@ -29,18 +31,11 @@ namespace Main.ViewModels
 
         public ICommand ChooseService => new Command(x =>
         {
-            if (x is ServiceDto dto)
-            {
-                orderService.SetupService(dto.Id, dto.Cost);
-                pageservice.ChangePage<Pages.OrderDataPage>(PoolIndex, DisappearAnimation.Default);
-            }
-        });
+            orderService.SetupService(Selected.Id, Selected.Cost);
+            pageservice.ChangePage<Pages.OrderDataPage>(PoolIndex, DisappearAnimation.Default);
+            
+        }, y => Selected != null);
 
-
-        async Task Reload()
-        {
-            await servicesService.ReloadAsync();
-        }
 
         public ObservableCollection<ServiceDto> Services { get; set; }
 

@@ -22,7 +22,7 @@
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{DynamicResource TextBlock_H1}" Margin="15 15" Grid.Column="1" Text="Заполните данные"/>
+        <TextBlock Style="{DynamicResource TextBlock_H1}" Margin="15 15" Grid.Column="1" Text="Зарегистрируйтесь"/>
 
         <Grid 
             HorizontalAlignment="Center" 
@@ -71,20 +71,19 @@
 
         <Button Content="Назад"                 
                 Grid.Row="3"
-                FontSize="15"
                 Grid.Column="1"
                 Padding="35 5"
+                Style="{DynamicResource BackButton}"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Command="{Binding BackCommand}"/>
 
         <Button
                 Grid.Row="3"
-                FontSize="18"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Padding="45 7"
-                
+                Style="{DynamicResource MenuButton}"                
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Command="{Binding NextCommand}">
@@ -95,11 +94,11 @@
 
         <Button
                 Grid.Row="3"
-                FontSize="16"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Padding="45 7"
-                
+                Padding="35 5"
+            FontSize="17"
+                Style="{DynamicResource MenuButton}"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Command="{Binding Decline}">

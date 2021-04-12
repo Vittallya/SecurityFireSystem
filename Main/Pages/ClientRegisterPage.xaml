@@ -42,7 +42,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel HorizontalAlignment="Left" Width="250">
-                <TextBlock Margin="0 15" Style="{DynamicResource TextBlock_H3}" Text="Ваше имя:"/>
+                <TextBlock Margin="0 15" Style="{DynamicResource TextBlock_H3}" Text="ФИО:"/>
                 <TextBlock Style="{DynamicResource TextBlock_H3}" Text="Номер телефона:"/>
                 <TextBlock 
                     Style="{DynamicResource TextBlock_H3}" Text="Введите адрес:" 
@@ -95,6 +95,7 @@
                 Content="Регистрация"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
+                Style="{DynamicResource MenuButton}"
                 Command="{Binding NextCommand}"/>
 
     </Grid>

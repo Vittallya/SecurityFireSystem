@@ -10,7 +10,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WorkersPage">
 
-    <Grid Background="LightGray">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="120" />
             <ColumnDefinition Width="8*"/>
@@ -53,10 +53,10 @@
 
 
                 <Border
-                    BorderBrush="White"
                     Background="White"
                     CornerRadius="3"
                     BorderThickness="3" 
+                    BorderBrush="LightGray"
                     HorizontalAlignment="Left" >
                     <Image
                         Source="{Binding WorkerAnket.ImagePath}"/>
@@ -67,25 +67,25 @@
                 <Border 
                     Grid.Column="2"
                     VerticalAlignment="Top"
-                    BorderBrush="White"
+                    BorderBrush="LightGray"
                     CornerRadius="3"
                     BorderThickness="3" 
                     Padding="25 15">
                     
                     <StackPanel  Grid.Column="1">
                         <TextBlock 
-                        Style="{DynamicResource TextBlock_H1}" 
+                        Style="{DynamicResource TextBlock_H2}" 
                         Text="{Binding Name}"/>
 
 
                         <TextBlock 
                         Margin="0 10"
-                        Style="{DynamicResource TextBlock_H2}" 
+                        Style="{DynamicResource TextBlock_H2_5}" 
                         Text="{Binding Special}"/>
 
                         <TextBlock 
                         Margin="0 5"
-                        Style="{DynamicResource TextBlock_H2}" >
+                        Style="{DynamicResource TextBlock_H2_5}" >
                             <Run Text="Работает у нас с"/>
                             <Run Text="{Binding StartWorkingDate, StringFormat='dd.MM.yyyy'}"/>
                         </TextBlock>
@@ -104,7 +104,7 @@
                     <Border 
                     CornerRadius="3"
                     BorderThickness="3"
-                    BorderBrush="White" Padding="45 35">
+                    BorderBrush="LightGray" Padding="45 35">
 
                     
 
@@ -113,7 +113,7 @@
                             HorizontalAlignment="Center"
                             TextWrapping="Wrap"
                             MinHeight="35"
-                            Style="{DynamicResource TextBlock_H1}"
+                            Style="{DynamicResource TextBlock_H2}"
                             Text="{Binding WorkerAnket.Quotation}"/>
                     
                 </Border>
@@ -166,9 +166,9 @@
         <Button Content="На главную" 
                 Grid.Column="1"
                 Grid.Row="2"
-                FontSize="16"
                 VerticalAlignment="Center"
                 Padding="35 7"
+                Style="{DynamicResource MenuButton}"
                 Command="{Binding BackCommand}"
                 HorizontalAlignment="Center"/>
 

@@ -44,7 +44,7 @@
             <StackPanel HorizontalAlignment="Left" Width="250">
                 <TextBlock 
                     Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
-                    Margin="0 15" Style="{DynamicResource TextBlock_H3}" Text="Ваше имя:"/>
+                    Margin="0 15" Style="{DynamicResource TextBlock_H3}" Text="ФИО:"/>
                 <TextBlock
                     Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
                     Style="{DynamicResource TextBlock_H3}" Text="Номер телефона:"/>
@@ -87,11 +87,11 @@
 
         <Button Content="Назад"                 
                 Grid.Row="3"
-                FontSize="15"
                 Grid.Column="1"
                 Padding="35 5"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
+                Style="{DynamicResource BackButton}"
                 Command="{Binding BackCommand}"/>
 
         <Button
@@ -100,7 +100,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Padding="45 7"
-                
+                Style="{DynamicResource MenuButton}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Command="{Binding NextCommand}">

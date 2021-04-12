@@ -64,11 +64,6 @@ namespace Main.ViewModels
         public bool IsLoadingVisible { get; set; }
 
 
-        protected override void Back()
-        {
-            pageservice.ChangePage<Pages.HomePage>(DisappearAnimation.Default);
-        }
-
         public ObservableCollection<OrderDto> Orders { get; set; }
 
         public override int PoolIndex => Rules.Pages.MainPool;

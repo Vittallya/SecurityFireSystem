@@ -23,8 +23,9 @@
         <Button Margin="0 15" 
                 VerticalAlignment="Bottom"
                     Padding="25 7"
+                Style="{DynamicResource MenuButton}"
                     HorizontalAlignment="Center"
-                    Content="Вернуться на главную" FontSize="15" Command="{Binding NextCommand}"/>
+                    Content="Вернуться на главную" Command="{Binding NextCommand}"/>
 
     </Grid>
 </Page>

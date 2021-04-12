@@ -82,6 +82,10 @@
     <Compile Include="Migrations\202104101658130_orderDate.designer.cs">
       <DependentUpon>202104101658130_orderDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104111946069_FillTable.cs" />
+    <Compile Include="Migrations\202104111946069_FillTable.designer.cs">
+      <DependentUpon>202104111946069_FillTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Order.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104101658130_orderDate.resx">
       <DependentUpon>202104101658130_orderDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104111946069_FillTable.resx">
+      <DependentUpon>202104111946069_FillTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

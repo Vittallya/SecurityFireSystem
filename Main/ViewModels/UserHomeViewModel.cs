@@ -59,12 +59,13 @@ namespace Main.ViewModels
 
         private async Task OnEntered(AccountEntered arg)
         {
-            pageservice.ChangePage<Pages.HomePage>(DisappearAnimation.Default);
+            pageservice.ClearHistoryByPool(Rules.Pages.MainPool);
+            pageservice.ChangePage<Pages.HomePage>(PoolIndex, DisappearAnimation.Default);
         }
 
         public ICommand ToServices => new Command(x =>
         {
-            pageservice.ChangePage<Pages.ServicesPage>(DisappearAnimation.Default);
+            pageservice.ChangePage<Pages.ServicesPage>(PoolIndex, DisappearAnimation.Default);
         });
 
         public ICommand ToSerts => new Command(x =>
@@ -94,7 +95,7 @@ namespace Main.ViewModels
 
         public ICommand ToProfileView => new Command(x =>
         {
-            pageservice.ChangePage<Pages.ClientPage>(DisappearAnimation.Default);
+            pageservice.ChangePage<Pages.ClientPage>(PoolIndex, DisappearAnimation.Default);
         });
        
 

@@ -4,33 +4,41 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Main.Pages"
+      xmlns:vm="clr-namespace:Main.ViewModels"
       mc:Ignorable="d" 
-      DataContext="{Binding Source={StaticResource Locator}, Path=HomeViewModel}"
+      DataContext="{Binding HomeViewModel, Source={StaticResource Locator}}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
 
-    <Grid Background="LightGray">
+    <Grid 
+        Background="LightGray">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="16*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
             <RowDefinition/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
 
+        <Image Source="{StaticResource Background}"
+               Grid.RowSpan="2"
+               Grid.ColumnSpan="2" Stretch="UniformToFill"/>
+
+        
+        
         <TextBlock Text="Нет пожаров РФ" 
-                   FontSize="25"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Style="{DynamicResource TextBlock_H1}"
                    VerticalAlignment="Center"
-                   Grid.Column="1" FontFamily="Candara"/>
+                   Grid.Column="1" />
 
         <Border 
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Padding="15 10 55 10"
-            BorderBrush="White"
-            Background="White"
             CornerRadius="3"
             BorderThickness="3"
             Grid.Column="1" Grid.Row="1">
@@ -38,36 +46,43 @@
             <StackPanel>
                 <Button Margin="0 9" 
                         Command="{Binding ToServices}"
-                        FontSize="18"
-                        Padding="35 8" Content="Виды услуг"/>
+                        Style="{DynamicResource MenuButton}"
+                        Content="Виды услуг">
+                </Button>
                 <Button Margin="0 9" 
                         FontSize="18"
                         Command="{Binding ToSerts}"
-                        Padding="35 8" Content="Сертификация"/>
+                        Style="{DynamicResource MenuButton}"
+                        Content="Сертификация"/>
                 <Button Margin="0 9" 
                         FontSize="18"
                         Command="{Binding ToWorkers}"
-                        Padding="35 8" Content="Работники"/>
+                        Style="{DynamicResource MenuButton}"
+                        Content="Работники"/>
                 <Button Margin="0 9" 
                         FontSize="18"
                         Command="{Binding ToWorks}"
-                        Padding="35 8" Content="Примеры работ"/>
+                        Style="{DynamicResource MenuButton}"
+                        Content="Примеры работ"/>
                 <Button Margin="0 9" 
                         FontSize="18"
                         Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVis}}"
                         Command="{Binding ToProfileView}"
-                        Padding="35 8" Content="Мои заказы"/>
+                        Style="{DynamicResource MenuButton}"
+                        Content="Мои заказы"/>
                 
                 <Button Margin="0 9" 
                         FontSize="18"
                         Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVis}}"
                         Command="{Binding LogoutCommand}"
+                        Style="{DynamicResource MenuButton}"
                         Padding="35 8" Content="Выйти"/>
                 
                 <Button Margin="0 9" 
                         FontSize="18"
                         Visibility="{Binding IsAutorized, Converter={StaticResource BoolToVisInvert}}"
                         Command="{Binding ToAutorize}"
+                        Style="{DynamicResource MenuButton}"
                         Padding="35 8" Content="Авторизация"/>
                 
             </StackPanel>

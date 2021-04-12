@@ -29,44 +29,78 @@
                    Grid.Column="0"/>
 
 
-        <ItemsControl 
+
+        <StackPanel
+            Grid.Row="1" 
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"    >
+        <ListBox   
+            SelectedItem="{Binding Selected}"
             Focusable="False"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            Grid.Row="1" Grid.Column="1"
+            BorderBrush="{x:Null}"
             ItemsSource="{Binding Services, UpdateSourceTrigger=PropertyChanged}">
 
-
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel  Margin="10 7" Orientation="Horizontal">
-                        <TextBlock Style="{DynamicResource TextBlock_H3}" Width="350" Text="{Binding Name}"/>
-                        <TextBlock Style="{DynamicResource TextBlock_H3_DemiBold}"
+                    <Grid   Margin="10 7">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.ColumnSpan="3" Grid.Row="1" Orientation="Horizontal">
+
+                        <TextBlock Style="{DynamicResource TextBlock_H3}" FontSize="19" 
+                                   MinWidth="450"
+                                   Text="{Binding Name}"/>
+                            <TextBlock Style="{DynamicResource TextBlock_H3_DemiBold}"
                                    FontStyle="Italic"
                                    Width="120" Text="{Binding Cost, StringFormat='{}{0} р.'}"/>
 
-                        <Button 
-                            Content="Выбрать"
-                            Style="{DynamicResource LinkButton}"
-                            Command="{Binding ChooseService}"
-                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=DataContext}"
-                            DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext}"
-                                />
+                        </StackPanel>
 
-                    </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
-        </ItemsControl>
+        </ListBox>
 
-        <Button Content="На главную" Grid.Column="0"
+            <Button Content="Выбрать" 
+                FontSize="19"
+                    Command="{Binding ChooseService}"
+                Padding="55 5"
+                    Margin="0 25"
+                    HorizontalAlignment="Center"
+                Style="{DynamicResource MenuButton}"
+                Grid.Row="0"/>
+
+        </StackPanel>
+
+        <Button Content="На главную" 
+                Grid.Column="0"
                 Grid.ColumnSpan="2"
-                FontSize="16"
                 VerticalAlignment="Bottom"
-                Padding="35 7"
                 Command="{Binding BackCommand}"
                 HorizontalAlignment="Center"
-                Grid.Row="1"/>
+                Style="{DynamicResource BackButton}"
+                Grid.Row="1" BorderBrush="{x:Null}">
+        </Button>
 
     </Grid>
 </Page>

@@ -118,5 +118,8 @@
   <ItemGroup>
     <Resource Include="Images\quotation.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

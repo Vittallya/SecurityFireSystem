@@ -48,10 +48,6 @@ namespace Main.ViewModels
 
         }, y => Login != null && Login.Length > 1 && PasswordBox.Password != null && PasswordBox.Password.Length > 1);
 
-        protected override void Back()
-        {
-            pageService.ChangePage<Pages.HomePage>(DisappearAnimation.Default);
-        }
 
         public override int PoolIndex => Rules.Pages.MainPool;
     }

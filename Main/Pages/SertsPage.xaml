@@ -107,7 +107,7 @@
         <Button Content="Назад"                 
                 Grid.Row="3"
                 Grid.Column="1"
-                Padding="35 5"
+                Style="{DynamicResource MenuButton}"
                 FontSize="16"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
