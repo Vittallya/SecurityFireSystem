@@ -44,7 +44,7 @@ namespace Main.ViewModels
             Init();
         }
 
-        public string LoadingText { get; set; } = "Загрузка бд...";
+        public string LoadingText { get; set; } = "Загрузка приложения...";
 
         async void Init()
         {
@@ -77,6 +77,7 @@ namespace Main.ViewModels
         public bool IsLoadingAnimation { get; set; } = true;
 
         public int Width { get; set; } = 800;
+        public int WidthMinus => -Width;
         public override Page CurrentPage { get; set; }
     }
 }

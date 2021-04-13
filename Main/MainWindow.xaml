@@ -20,9 +20,7 @@
             VerticalAlignment="Center"
             Visibility="{Binding IsErrorLoading, Converter={StaticResource BoolToVis}}">
             <TextBlock
-                Style="{DynamicResource TextBlock_H2}">
-                
-                <Run Text="ERROR: "/>
+                Style="{DynamicResource TextBlock_H2}">                
                 <Run Text="{Binding ErrorMessage}"/>
             </TextBlock>
 
@@ -35,19 +33,78 @@
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                  Visibility="{Binding IsLoadingAnimation, Converter={StaticResource BoolToVis}}">
+            
             <TextBlock
                 Style="{DynamicResource TextBlock_H2}"
                 Text="{Binding LoadingText}"/>
+            
             <Ellipse Fill="Black" 
-                  Width="8"  Margin="0 10 0 0" Height="8" RenderTransformOrigin="0.5,0.5">
-            <Ellipse.RenderTransform>
-                <ScaleTransform ScaleX="1" ScaleY="1"/>
-            </Ellipse.RenderTransform>
+                  Width="8"   Margin="0 25 0 0" Height="8" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup >
+                        <TranslateTransform X="-100" Y="0"/>
+                        <ScaleTransform />
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
             <Ellipse.Triggers>
                 <EventTrigger RoutedEvent="Loaded">
-                    <BeginStoryboard>
-                        <Storyboard RepeatBehavior="Forever">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)">
+                    <BeginStoryboard >
+                        <Storyboard  BeginTime="0:0:0" RepeatBehavior="Forever">
+                                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" >
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <ElasticEase Oscillations="0" />
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+
+                                    <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1" >
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <ElasticEase Oscillations="0"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+
+                                </DoubleAnimationUsingKeyFrames>-->
+
+                                <DoubleAnimation 
+                                    Duration="0:0:1"
+                                    To="100"
+                                    Storyboard.TargetProperty="RenderTransform.Children[0].X">
+                                    <DoubleAnimation.EasingFunction>
+                                        <ElasticEase Oscillations="0"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+
+                                <!--<DoubleAnimation 
+                                    Duration="0:0:0.5"
+                                    To="2"
+                                    Storyboard.TargetProperty="RenderTransform.Children[1].ScaleX">
+                                    <DoubleAnimation.EasingFunction>
+                                        <ElasticEase Oscillations="0"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+
+                                <DoubleAnimation 
+                                    BeginTime="0:0:0.5"
+                                    Duration="0:0:0.5"
+                                    To="1"
+                                    Storyboard.TargetProperty="RenderTransform.Children[1].ScaleX">
+                                    <DoubleAnimation.EasingFunction>
+                                        <ElasticEase Oscillations="0"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>-->
+
+                                <DoubleAnimation 
+                                    BeginTime="0:0:1"
+                                    Duration="0:0:1"
+                                    To="-100"
+                                    Storyboard.TargetProperty="RenderTransform.Children[0].X">
+                                    
+                                    <DoubleAnimation.EasingFunction>
+                                        <ElasticEase Oscillations="0"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+
+                                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)">
                                     <EasingDoubleKeyFrame KeyTime="0:0:2" Value="2.5" >
                                         <EasingDoubleKeyFrame.EasingFunction>
                                             <ElasticEase Oscillations="0" />
@@ -60,22 +117,34 @@
                                         </EasingDoubleKeyFrame.EasingFunction>
                                     </EasingDoubleKeyFrame>
 
-                                </DoubleAnimationUsingKeyFrames>
-                            
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)">
-                                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="2.5" >
-                                        <EasingDoubleKeyFrame.EasingFunction>
-                                            <ElasticEase Oscillations="0" />
-                                        </EasingDoubleKeyFrame.EasingFunction>
-                                    </EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>-->
+                        </Storyboard>
+                    </BeginStoryboard>
+                    <BeginStoryboard >
+                            <Storyboard  BeginTime="0:0:5" RepeatBehavior="Forever">
 
-                                    <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1" >
-                                        <EasingDoubleKeyFrame.EasingFunction>
-                                            <ElasticEase Oscillations="0"/>
-                                        </EasingDoubleKeyFrame.EasingFunction>
-                                    </EasingDoubleKeyFrame>
 
-                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimation 
+                                    Duration="0:0:0.5"
+                                    To="2"
+                                    Storyboard.TargetProperty="RenderTransform.Children[1].ScaleX">
+                                    <DoubleAnimation.EasingFunction>
+                                        <ElasticEase Oscillations="0"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+
+                                <DoubleAnimation 
+                                    BeginTime="0:0:0.5"
+                                    Duration="0:0:0.5"
+                                    To="1"
+                                    Storyboard.TargetProperty="RenderTransform.Children[1].ScaleX">
+                                    <DoubleAnimation.EasingFunction>
+                                        <ElasticEase Oscillations="0"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+
+
+
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>

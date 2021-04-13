@@ -10,8 +10,10 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
 
-    <Grid 
-        Background="LightGray">
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource Background}"/>
+        </Grid.Background>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
