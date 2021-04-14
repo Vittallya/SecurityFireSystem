@@ -258,9 +258,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
@@ -290,6 +288,17 @@
       <Project>{43d571cc-c97f-4bb7-bde2-321ff6b60260}</Project>
       <Name>WpfControlLibrary1</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Debug\Images\female1.jpg" />
+    <Resource Include="bin\Debug\Images\female2.jpg" />
+    <Resource Include="bin\Debug\Images\female3.jpg" />
+    <Resource Include="bin\Debug\Images\male1.jpg" />
+    <Resource Include="bin\Debug\Images\male2.jpg" />
+    <Resource Include="bin\Debug\Images\male3.jpg" />
+    <Resource Include="bin\Debug\Images\male4.jpg" />
+    <Resource Include="bin\Debug\Images\male5.jpg" />
+    <Resource Include="bin\Debug\Images\male6.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
