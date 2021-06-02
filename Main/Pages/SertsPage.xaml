@@ -47,7 +47,7 @@
             </ItemsControl.ItemsPanel>
 
 
-                <ListView.ItemContainerStyle>
+            <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Cursor" Value="Hand"/>
                         <Setter Property="Template">

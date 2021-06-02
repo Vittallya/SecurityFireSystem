@@ -166,7 +166,7 @@ namespace BL
                     StartWorkingDate = new System.DateTimeOffset(new DateTime(2014, 2, 21)),
                     WorkerAnket = new WorkerAnket
                     {
-                        Quotation = "Зашибись, четко",
+                        Quotation = "Кто здесь?!",
                         Image = "male3"
                     }
                 },

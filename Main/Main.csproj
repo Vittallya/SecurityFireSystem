@@ -119,6 +119,9 @@
     <Compile Include="Pages\ClientRegisterPage.xaml.cs">
       <DependentUpon>ClientRegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DogovorPage.xaml.cs">
+      <DependentUpon>DogovorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ClientRegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DogovorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,6 +261,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\obrazec.docx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -46,5 +46,24 @@ namespace BL
             return false;
         }
 
+        public async Task<bool> LoginAdmin(string login, string pass)
+        {
+            await dbContext.Profiles.Include(x => x.Client).LoadAsync();
+
+            var user = await dbContext.
+                Profiles.
+                FirstOrDefaultAsync(x => string.Compare(x.Login, login) == 0 && string.Compare(x.Password, pass) == 0);
+
+            if (user != null)
+            {
+                var dto = mapper.MapTo<Client, ClientDto>(user.Client);
+                userService.SetupUser(dto);
+                return true;
+            }
+            ErrorMessage = "Некорректные входные данные";
+
+            return false;
+        }
+
     }
 }

@@ -12,6 +12,8 @@ namespace DAL.Models
         public string Name { get; set; }
 
         public string Phone { get; set; }
+        public string INN { get; set; }
+        public string CompanyName { get; set; }
 
         public virtual Profile Profile { get; set; }
     }

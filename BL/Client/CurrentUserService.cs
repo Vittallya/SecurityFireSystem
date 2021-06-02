@@ -22,6 +22,8 @@ namespace BL
             this.mapper = mapper;
         }
 
+        public bool IsAdmin { get; private set; }
+
         public ClientDto CurrentUser { get; private set; }
 
         public bool IsAutorized { get; private set; }
@@ -33,14 +35,21 @@ namespace BL
         {
             CurrentUser = null;
             IsAutorized = false;
+            IsAdmin = false;
             Exited?.Invoke();
         }
 
-        public void SetupUser(ClientDto user)
+        internal void SetupUser(ClientDto user)
         {
             CurrentUser = user;
             IsAutorized = true;
             Autorized?.Invoke(user);
+        }
+
+        internal void SetupAdmin()
+        {
+            IsAutorized = true;
+            IsAdmin = true;
         }
         
         public async Task<ProfileDto> GetProfile()
