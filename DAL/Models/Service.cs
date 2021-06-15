@@ -15,5 +15,7 @@ namespace DAL.Models
         public string Name { get; set; }
 
         public double Cost { get; set; }    
+
+        public ICollection<Order> Orders { get; set; }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using BL;
 using DAL.Dto;
 using MVVM_Core;
+using System.Collections;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Main.ViewModels
@@ -31,8 +34,12 @@ namespace Main.ViewModels
 
         public ICommand ChooseService => new Command(x =>
         {
-            orderService.SetupService(Selected.Id, Selected.Cost);
-            pageservice.ChangePage<Pages.OrderDataPage>(PoolIndex, DisappearAnimation.Default);
+            if(x is IList coll)
+            {
+                var services = coll.OfType<ServiceDto>().ToList();
+                orderService.SetupService(services, services.Sum(y => y.Cost));
+                pageservice.ChangePage<Pages.OrderDataPage>(PoolIndex, DisappearAnimation.Default);
+            }
             
         }, y => Selected != null);
 

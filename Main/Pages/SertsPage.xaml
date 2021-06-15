@@ -19,6 +19,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="12*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <TextBlock 
@@ -79,18 +80,72 @@
 
         <Rectangle
             Visibility="{Binding IsCentralImageVis, Converter={StaticResource BoolToVis}}"
-            Fill="Black" Grid.ColumnSpan="2" Grid.RowSpan="3" Opacity="0.4">
+            Fill="Black" Grid.ColumnSpan="3" Grid.RowSpan="3" Opacity="0.4">
         </Rectangle>
 
+        
+        
         <Grid
             Visibility="{Binding IsCentralImageVis, Converter={StaticResource BoolToVis}}"
             HorizontalAlignment="Center"
                 Grid.Row="1"
             Grid.Column="1">
-            
-            
-            <Image
+            <Border 
+                Background="White" 
+                BorderBrush="White" 
+                BorderThickness="3" 
+                Padding="20 15"
+                CornerRadius="3">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image
+                        x:Name="img"
                  Source="{Binding SelectedItem.Source}"/>
+
+
+                    <StackPanel
+                        Visibility="{Binding IsDetails, Converter={StaticResource BoolToVis}}"
+                        Grid.Column="1"
+                        Margin="25 0">
+                        <TextBlock Style="{DynamicResource TextBlock_H3}" 
+                                   TextWrapping="Wrap"
+                                   Text=""/>
+
+                        <TextBlock
+                            TextWrapping="Wrap"
+                            Margin="0 8" Style="{DynamicResource TextBlock_H3}">
+                            <Run Text="Адрес объекта (-ов): "/>
+                            <Run FontWeight="DemiBold"
+                                 Text="{Binding SelectedItem.Address, Mode=OneWay}"/>
+                        </TextBlock>
+                        
+                        <TextBlock Margin="0 8" Style="{DynamicResource TextBlock_H3}">
+                            <Run Text="Год выполнения: "/>
+                            <Run FontWeight="DemiBold"
+                                 Text="{Binding SelectedItem.Year, Mode=OneWay}"/>
+                        </TextBlock>
+                        
+                        <TextBlock 
+                            TextWrapping="Wrap"
+                            Margin="0 8" Style="{DynamicResource TextBlock_H3}">
+                            <Run Text="Что мы сделали: "/>
+                            <Run FontWeight="DemiBold"
+                                 Text="{Binding SelectedItem.Descr, Mode=OneWay}"/>
+                        </TextBlock>
+
+
+                    </StackPanel>
+                    
+                </Grid>
+
+            </Border>
+
 
             <Button 
                 Command="{Binding Close}"
@@ -104,6 +159,7 @@
                 Content="X"/>
 
         </Grid>
+        
         <Button Content="Назад"                 
                 Grid.Row="3"
                 Grid.Column="1"

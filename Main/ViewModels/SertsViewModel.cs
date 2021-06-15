@@ -20,12 +20,15 @@ namespace Main.ViewModels
         public SertsViewModel(PageService pageservice, SourceService sourceService) : base(pageservice)
         {
             this.sourceService = sourceService;
+            IsDetails = sourceService.IsDetails;
             if (sourceService.IsSetted)
             {
                 Images = new ObservableCollection<dynamic>(sourceService.Resources);
                 Header = sourceService.Header;
             }
         }
+
+        public bool IsDetails { get; set; }
 
         public bool IsCentralImageVis { get; set; }
 

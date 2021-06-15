@@ -48,9 +48,6 @@ namespace Main.ViewModels
 
         async void Init()
         {
-            pipeHanlder.Init();
-            pipeHanlder.UpdateCalled += PipeHanlder_UpdateCalled;
-
             IsLoaded = await contextLoader.LoadAsync<Service>();
             IsLoadingAnimation = false;
 

@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class FillTable : IMigrationMetadata
+    public sealed partial class manyServices : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FillTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(manyServices));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104111946069_FillTable"; }
+            get { return "202106151320154_manyServices"; }
         }
         
         string IMigrationMetadata.Source

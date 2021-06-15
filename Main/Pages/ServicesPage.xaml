@@ -38,6 +38,8 @@
         <ListBox   
             SelectedItem="{Binding Selected}"
             Focusable="False"
+            x:Name="listbox"
+            SelectionMode="Multiple"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             BorderBrush="{x:Null}"
             ItemsSource="{Binding Services, UpdateSourceTrigger=PropertyChanged}">
@@ -83,6 +85,7 @@
 
             <Button Content="Выбрать" 
                 FontSize="19"
+                    CommandParameter="{Binding ElementName=listbox, Path=SelectedItems}"
                     Command="{Binding ChooseService}"
                 Padding="55 5"
                     Margin="0 25"

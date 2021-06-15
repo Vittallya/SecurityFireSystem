@@ -26,17 +26,17 @@ namespace Main.ViewModels
                 {
                     selectedOrder = value;                  
                     OnPropertyChanged();
-                    SetupService(value.ServiceId);
+                    SetupService(value.Id);
                 }
             }
         }
 
-        async void SetupService(int serviceId)
+        async void SetupService(int orderId)
         {
-            Service = await orderService.GetService(serviceId);
+            Services = new ObservableCollection<ServiceDto>(await orderService.GetServices(orderId));
         }
 
-        public ServiceDto Service { get; set; }
+        public ObservableCollection<ServiceDto> Services { get; set; }
 
 
 

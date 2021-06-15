@@ -82,9 +82,13 @@
     <Compile Include="Migrations\202104101658130_orderDate.designer.cs">
       <DependentUpon>202104101658130_orderDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104111946069_FillTable.cs" />
-    <Compile Include="Migrations\202104111946069_FillTable.designer.cs">
-      <DependentUpon>202104111946069_FillTable.cs</DependentUpon>
+    <Compile Include="Migrations\202106151320154_manyServices.cs" />
+    <Compile Include="Migrations\202106151320154_manyServices.designer.cs">
+      <DependentUpon>202106151320154_manyServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106151321129_seed.cs" />
+    <Compile Include="Migrations\202106151321129_seed.designer.cs">
+      <DependentUpon>202106151321129_seed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
@@ -119,8 +123,11 @@
     <EmbeddedResource Include="Migrations\202104101658130_orderDate.resx">
       <DependentUpon>202104101658130_orderDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104111946069_FillTable.resx">
-      <DependentUpon>202104111946069_FillTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106151320154_manyServices.resx">
+      <DependentUpon>202106151320154_manyServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106151321129_seed.resx">
+      <DependentUpon>202106151321129_seed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

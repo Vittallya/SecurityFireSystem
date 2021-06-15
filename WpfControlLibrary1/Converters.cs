@@ -149,7 +149,7 @@ namespace WpfControlLibrary1
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return !object.Equals(value, null) ? Visibility.Visible : Visibility.Collapsed; ;
+            return !object.Equals(value, null) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

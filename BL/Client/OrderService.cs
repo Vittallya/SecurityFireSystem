@@ -53,9 +53,9 @@ namespace BL
             _currentOrder = await dbContext.Orders.FindAsync(orderId);
         }
 
-        public void SetupService(int serviceId, double fullCost)
+        public void SetupService(ICollection<ServiceDto> services, double fullCost)
         {
-            _serviceId = serviceId;
+            _services = services.Select(x => x.Id).ToList();
             _fullCost = fullCost;
         }
 
@@ -73,10 +73,20 @@ namespace BL
 
         public async Task<bool> ApplyOrder()
         {
-            await dbContext.Services.LoadAsync();
-            _currentOrder.ServiceId = _serviceId;
+            await dbContext.Services.Include(x => x.Orders).LoadAsync();
+
+            foreach(var servId in _services)
+            {
+                var serv = await dbContext.Services.FindAsync(servId);
+                serv.Orders?.Add(_currentOrder);
+                dbContext.Entry(serv).State = EntityState.Modified;
+
+            }
+
             _currentOrder.FullCost = _fullCost;
             
+
+
             if (!IsEdit)
             {
                 _currentOrder.CreationDate = DateTimeOffset.Now;
@@ -106,7 +116,7 @@ namespace BL
 
         public async Task<IEnumerable<OrderDto>> GetAllOrders(int clientId)
         {
-            await dbContext.Orders.Include(x => x.Service).LoadAsync();
+            await dbContext.Orders.Include(x => x.Services).LoadAsync();
 
             var list = await dbContext.
                 Orders.
@@ -122,11 +132,15 @@ namespace BL
             });
         }
 
-        public async Task<ServiceDto> GetService(int serviceId)
+        public async Task<IEnumerable<ServiceDto>> GetServices(int orderId)
         {
-            await dbContext.Services.LoadAsync();
-            var service = await dbContext.Services.FindAsync(serviceId);
-            return mapper.MapTo<Service, ServiceDto>(service);
+            await dbContext.Orders.Include(x => x.Services).LoadAsync();
+
+            var order = await dbContext.Orders.FindAsync(orderId);
+            await dbContext.Entry(order).Collection(x => x.Services).LoadAsync();
+
+            var list = order.Services.Select(x => mapper.MapTo<Service, ServiceDto>(x));
+            return list;
         }
 
         public async Task<OrderDto> CancelOrder(int orderId)

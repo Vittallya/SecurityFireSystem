@@ -19,9 +19,11 @@ namespace BL
         public bool IsSetted => Resources != null;
 
         public string Header { get; set; } = "Наши сертификаты";
+        public bool IsDetails { get; private set; }
 
         public void SetImagesSerts(Window _curWindow)
         {
+            IsDetails = false;
             Resources = new List<dynamic>
             {
                 new
@@ -33,31 +35,31 @@ namespace BL
 
                 new
                 {
-                    Content = _curWindow.FindResource("SertImg2"),
+                    //Content = _curWindow.FindResource("SertImg2"),
                     Source = (_curWindow.FindResource("SertImg2") as Image).Source,
                     Header = "Сертификат_ПБ_Модули",
                 },
                 new
                 {
-                    Content = _curWindow.FindResource("SertImg3"),
+                    //Content = _curWindow.FindResource("SertImg3"),
                     Source = (_curWindow.FindResource("SertImg3") as Image).Source,
                     Header = "Сертификат_ПБ_МУПТВ",
                 },
                 new
                 {
-                    Content = _curWindow.FindResource("SertImg4"),
+                    //Content = _curWindow.FindResource("SertImg4"),
                     Source = (_curWindow.FindResource("SertImg4") as Image).Source,
                     Header = "Сертификат_ТР_ТС_л.1.",
                 },
                 new
                 {
-                    Content = _curWindow.FindResource("SertImg5"),
+                    //Content = _curWindow.FindResource("SertImg5"),
                     Source = (_curWindow.FindResource("SertImg5") as Image).Source,
                     Header = "Сертификат_ТР_ТС_л.2.",
                 },
                 new
                 {
-                    Content = _curWindow.FindResource("SertImg6"),
+                    //Content = _curWindow.FindResource("SertImg6"),
                     Source = (_curWindow.FindResource("SertImg6") as Image).Source,
                      Header = "Сертификат_ТР_ТС_л.3.",
                 },
@@ -66,26 +68,34 @@ namespace BL
 
         public void SetWorkExampleImages(Window _curWindow)
         {
-            Image image = new Image();
-
+            IsDetails = true;
             
             Resources = new List<dynamic>
             {
                 new
                 {
                     Source = _curWindow.FindResource("ImgEx1"),
-                     Header = "Международные аэропорты"
+                     Header = "Международные аэропорты",
+                     Address = "Международный аэропорт \"Пулково\" (г. Санкт-Петербург), Междунарожный аэропорт \"Бегишево\" (г. Нижнекамск), Международной аэропорт \"Шереметьево\" (г. Москва)",
+                     Year = 2015,
+                     Descr = "Установлена многоуровневая система пожарной безопасности соглассно всем совеременным международным стандартам систем пожарной безопасности на объектах, установлено более 30 тыс. дымовых датчиков, систем пожарутушения и оповещения. Обновлена панель управления, связывающая все датчики в единую систему безопасности"
                 },
 
                 new
                 {
                     Source = _curWindow.FindResource("ImgEx2"),
                     Header = "Больше 100 продуктовых магазинов",
+                    Address = "Более 25 городов по всей России из различных областей и республик",
+                    Year = 2016,
+                     Descr = "Обновлено и заменено старое техническое оборудование, установлены датчики дыма и устройства пожаротушения в каждом магазине"
                 },
                 new
                 {
                     Source = _curWindow.FindResource("ImgEx3"),
                     Header = "Министерство обороны РФ",
+                    Address = "г. Москва",
+                    Year = 2014,
+                     Descr = "Обновленно техническое оборудование, налажена многоуровневая система пожарной безопасности, установлено более 200 дымовых датчиков, систем пожарутушения и оповещения."
                 },
             };
         }
